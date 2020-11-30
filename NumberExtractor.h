@@ -46,9 +46,9 @@ public:
     // ExtractedNumber ExtractNextFullNumber();
     bool EndsWith(const std::string &mainStr, const std::string &toMatch);
     bool IfWordIsNumber(std::map<std::string, int> m, std::string word);
-    std::vector<int> getListOfNumberExtracted() const;
+    std::vector<std::string> getListOfNumberExtracted() const;
 
 private:
     /* data */
-    std::vector<int> listOfNumberExtracted;
+    std::vector<std::string> listOfNumberExtracted;
 };

@@ -17,8 +17,24 @@ int main()
 	}
 
 	NumberExtractor n = NumberExtractor(output, 1);
+
 	for (int i = 0; i < n.getListOfNumberExtracted().size(); ++i)
 	{
 		std::cout << n.getListOfNumberExtracted()[i] << ' ';
 	}
+
+	// ifstream myfile2("testText.txt");
+	// int i = 0;
+	// if (myfile2.is_open())
+	// {
+	// 	while (getline(myfile2, line))
+	// 	{
+	// 		std::cout << line << std::endl;
+	// 		if (i < n.getListOfNumberExtracted().size())
+	// 		{
+	// 			std::cout << n.getListOfNumberExtracted()[i++] << std::endl;
+	// 		}
+	// 	}
+	// 	myfile2.close();
+	// }
 }
