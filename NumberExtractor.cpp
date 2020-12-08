@@ -1,7 +1,4 @@
 #include "NumberExtractor.h"
-#include <iostream>
-#include <sstream>
-#include "map"
 NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtractionAfter)
 {
     std::map<std::string, int> conv;
@@ -174,3 +171,15 @@ bool NumberExtractor::EndsWith(const std::string &mainStr, const std::string &to
     else
         return false;
 }
+
+NumberExtractor::ExtractedNumber NumberExtractor::ExtractNextFullNumber(){
+    if(listOfNumberExtracted[indexOfListNumberExtracted].find(",") != -1){
+        // have number after decimal
+       std::string numberBeforeDecStr =  listOfNumberExtracted[indexOfListNumberExtracted].substr(0, listOfNumberExtracted[indexOfListNumberExtracted].find(",")-1);
+       std::string numberAfterDecStr =  listOfNumberExtracted[indexOfListNumberExtracted].substr(listOfNumberExtracted[indexOfListNumberExtracted].find(",")+1, listOfNumberExtracted.length());
+
+    }
+    NumberExtractor::ExtractedNumber output = ExtractedNumber(listOfNumberExtracted[indexOfListNumberExtracted], std::atoi(numberBeforeDecStr) ,std::atoi(numberAfterDecStr));
+    indexOfListNumberExtracted++;
+    return output;
+};
