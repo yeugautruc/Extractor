@@ -1,10 +1,12 @@
 #include "NumberExtractor.h"
 NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtractionAfter)
 {
+    indexOfListNumberExtracted = 0;
     std::map<std::string, int> conv;
     conv["zero"] = 0;
     conv["decimal"] = 222;
     conv["point"] = 222;
+    conv["dummy"] = 222;
 
     conv["one"] = 1;
     conv["two"] = 2;
@@ -68,11 +70,8 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
         }
     }
     int out = 0;
-    // for (int i = 0; i < numsExtracted.size(); i++)
-    // {
-    //     std::cout << numsExtracted[i] << " ;";
-    // }
     bool zeroStartNumber = true;
+    bool afterThousand = false;
     std::string result = "";
     for (int i = 0; i < numsExtracted.size(); i++)
     {
@@ -84,10 +83,14 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
         if (out != 404)
         {
             zeroStartNumber = false;
-
             switch (out)
             {
             case 0:
+                if (afterThousand)
+                {
+                    afterThousand = false;
+                    break;
+                }
                 if (!zeroStartNumber)
                 {
                     result = result + "0";
@@ -117,6 +120,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 result = result + "10";
                 break;
             case 1000:
+                afterThousand = true;
                 result = result + "000";
                 break;
             case 222:
@@ -136,9 +140,13 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
         }
         if (out == 404 || i == numsExtracted.size() - 1)
         {
-            listOfNumberExtracted.push_back(result);
+            if (result != "")
+            {
+                listOfNumberExtracted.push_back(result);
+            }
             result = "";
             zeroStartNumber = true;
+            afterThousand = false;
         }
     }
 };
@@ -172,14 +180,32 @@ bool NumberExtractor::EndsWith(const std::string &mainStr, const std::string &to
         return false;
 }
 
-NumberExtractor::ExtractedNumber NumberExtractor::ExtractNextFullNumber(){
-    if(listOfNumberExtracted[indexOfListNumberExtracted].find(",") != -1){
-        // have number after decimal
-       std::string numberBeforeDecStr =  listOfNumberExtracted[indexOfListNumberExtracted].substr(0, listOfNumberExtracted[indexOfListNumberExtracted].find(",")-1);
-       std::string numberAfterDecStr =  listOfNumberExtracted[indexOfListNumberExtracted].substr(listOfNumberExtracted[indexOfListNumberExtracted].find(",")+1, listOfNumberExtracted.length());
-
+NumberExtractor::ExtractedNumber NumberExtractor::ExtractNextFullNumber()
+{
+    if (indexOfListNumberExtracted >= listOfNumberExtracted.size())
+    {
+        NumberExtractor::ExtractedNumber output = ExtractedNumber("", -1, -1);
+        return output;
     }
-    NumberExtractor::ExtractedNumber output = ExtractedNumber(listOfNumberExtracted[indexOfListNumberExtracted], std::atoi(numberBeforeDecStr) ,std::atoi(numberAfterDecStr));
+    std::string numberBeforeDecStr = "";
+    std::string numberAfterDecStr = "";
+
+    if (listOfNumberExtracted[indexOfListNumberExtracted].find(",") != -1)
+    {
+        // have number after decimal
+        numberBeforeDecStr = listOfNumberExtracted[indexOfListNumberExtracted]
+                                 .substr(0, listOfNumberExtracted[indexOfListNumberExtracted].find(","));
+        numberAfterDecStr = listOfNumberExtracted[indexOfListNumberExtracted]
+                                .substr(listOfNumberExtracted[indexOfListNumberExtracted].find(",") + 1,
+                                        listOfNumberExtracted.size());
+        NumberExtractor::ExtractedNumber output = ExtractedNumber(listOfNumberExtracted[indexOfListNumberExtracted],
+                                                                  std::stoi(numberBeforeDecStr), std::stoi(numberAfterDecStr));
+        indexOfListNumberExtracted++;
+        return output;
+    }
+    NumberExtractor::ExtractedNumber output = ExtractedNumber(listOfNumberExtracted[indexOfListNumberExtracted],
+                                                              std::stoi(listOfNumberExtracted[indexOfListNumberExtracted]), -1);
+
     indexOfListNumberExtracted++;
     return output;
 };

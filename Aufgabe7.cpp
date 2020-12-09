@@ -1,43 +1,60 @@
 #include "NumberExtractor.h"
 #include "fstream"
 #include "iostream"
+#include <iomanip>
+#include "math.h"
 using namespace std;
+
+bool test0()
+{
+	string utter = "fly_niki six hundred zulu contact tower now "
+				   "one two three point eight servus "
+				   "one thousand zero nine ga"
+				   "zero one two three";
+
+	NumberExtractor numEx(utter);
+	NumberExtractor::ExtractedNumber exNum = numEx.ExtractNextFullNumber();
+	if (exNum.GetExtractedNumberAsInt() != 600 ||
+		exNum.GetNumberStringSeq() != "six hundred")
+	{
+		return false;
+	}
+
+	exNum = numEx.ExtractNextFullNumber();
+	if ((fabs(exNum.GetExtractedNumberAsDouble() - 123.8) > 0.0001) || (exNum.GetNumberStringSeq() != "one two three point eight"))
+	{
+		return false;
+	}
+
+	exNum = numEx.ExtractNextFullNumber();
+	if (exNum.IsExtractedNumberValid() || exNum.GetNumberStringSeq() != "")
+	{
+		return false;
+	}
+	return true;
+}
 
 int main()
 {
-	string utter = " six hundred"
-				   "one two thre point eight servus";
-	std::cout << utter;
-	// string output, line;
-	// ifstream myfile("testText.txt");
-	// if (myfile.is_open())
-	// {
-	// 	while (getline(myfile, line))
-	// 	{
-	// 		output += line + "\n";
-	// 	}
-	// 	myfile.close();
-	// }
+	std::cout << std::setprecision(2) << std::fixed;
+	if (test0())
+	{
+		std::cout << "true" << std::endl;
+	}
+	else
+	{
+		std::cout << "true" << std::endl;
+	}
 
-	// NumberExtractor n = NumberExtractor(output, 1);
-
-	// for (int i = 0; i < n.getListOfNumberExtracted().size(); ++i)
-	// {
-	// 	std::cout << n.getListOfNumberExtracted()[i] << ' ';
-	// }
-
-	// ifstream myfile2("testText.txt");
-	// int i = 0;
-	// if (myfile2.is_open())
-	// {
-	// 	while (getline(myfile2, line))
-	// 	{
-	// 		std::cout << line << std::endl;
-	// 		if (i < n.getListOfNumberExtracted().size())
-	// 		{
-	// 			std::cout << n.getListOfNumberExtracted()[i++] << std::endl;
-	// 		}
-	// 	}
-	// 	myfile2.close();
-	// }
+	// string utter = " six hundred a "
+	// 			   "one two three point eight servus";
+	// std::cout << utter << std::endl;
+	// NumberExtractor new1 = NumberExtractor(utter);
+	// NumberExtractor::ExtractedNumber out1 = new1.ExtractNextFullNumber();
+	// NumberExtractor::ExtractedNumber out2 = new1.ExtractNextFullNumber();
+	// std::cout << out2.GetExtractedNumberAsDouble() << std::endl;
+	// std::cout << out2.GetNumberStringSeq() << std::endl;
+	// std::cout << out1.GetNumberStringSeq() << std::endl;
+	// std::cout << out1.GetExtractedNumberAsInt() << std::endl;
+	// std::cout << out2.GetNumberOfStringForNumber() << std::endl;
 }
