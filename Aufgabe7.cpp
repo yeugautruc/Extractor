@@ -135,46 +135,13 @@ bool testExtractDecimalNumber()
 
 int main()
 {
-	std::cout << std::setprecision(4) << std::fixed;
-	std::cout << "Test 0: " << std::endl;
-	if (test0())
-	{
-		std::cout << "true" << std::endl;
-	}
-	else
-	{
-		std::cout << "false" << std::endl;
-	}
+	// std::cout << std::setprecision(4) << std::fixed;
+	std::cout << "test 0: ";
+	std::cout << ((test0()) ? "true" : "false") << std::endl;
 
-	std::cout << "testExtractDecimalNumber: " << std::endl;
-	if (testExtractDecimalNumber())
-	{
-		std::cout << "true" << std::endl;
-	}
-	else
-	{
-		std::cout << "false" << std::endl;
-	}
+	std::cout << "testExtractDecimalNumber: ";
+	std::cout << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
 
-	std::cout << "testExtractNumberThousand: " << std::endl;
-	if (testExtractNumberThousand())
-	{
-		std::cout << "true" << std::endl;
-	}
-	else
-	{
-		std::cout << "false" << std::endl;
-	}
-
-	// string utter = " six hundred a "
-	// 			   "one two three point eight servus";
-	// std::cout << utter << std::endl;
-	// NumberExtractor new1 = NumberExtractor(utter);
-	// NumberExtractor::ExtractedNumber out1 = new1.ExtractNextFullNumber();
-	// NumberExtractor::ExtractedNumber out2 = new1.ExtractNextFullNumber();
-	// std::cout << out2.GetExtractedNumberAsDouble() << std::endl;
-	// std::cout << out2.GetNumberStringSeq() << std::endl;
-	// std::cout << out1.GetNumberStringSeq() << std::endl;
-	// std::cout << out1.GetExtractedNumberAsInt() << std::endl;
-	// std::cout << out2.GetNumberOfStringForNumber() << std::endl;
+	std::cout << "testExtractNumberThousand: ";
+	std::cout << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
 }
