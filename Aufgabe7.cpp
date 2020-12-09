@@ -144,9 +144,9 @@ int main()
 		"dobry den sky_travel five eight juliert ruzyne radar radar contact"
 		" on present heading descend four thousand feet qnh one zero two two",
 		"jet_execute five two seven turn right heading three five zero vectoring for "
-		"ils approach runway two four hour and descend five thousand feet qnh one zero one two",
-		"good day vueling eight six five two praha radar radar contact "
-		"descend flight level one zero zero current information is quebec and speed"
+		"ils approach runway two four hour and descend five thousand feet qnh one zero one two ",
+		" good day vueling eight six five two praha radar radar contact "
+		"descend flight level one zero zero current information is quebec and speed "
 		"two seventy or less",
 
 		"oscar kilo victor india kilo roger descend three thousand five hundred feet"
@@ -161,10 +161,18 @@ int main()
 		"descend eight thousand six hundred twenty one feet",
 
 		"austrian three nine two papa descend altitude one zero thousand "
-		"qnh one zero zero three",
+		"qnh one zero zero three ",
 
 		"contact director one one nine dummy eight goodbye"};
 	NumberExtractor numEx1(wordSeq);
 	numEx1.PerformFullExtraction();
-	std::cout << "extracted: " << numEx1.GetExtractedNumbersCnt();
+	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
+	{
+		std::cout << wordSeq[i] << std::endl;
+		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
+		{
+			std::cout << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
+		}
+		std::cout << std::endl;
+	}
 }

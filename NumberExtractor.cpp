@@ -221,8 +221,11 @@ NumberExtractor::NumberExtractor(const std::vector<std::string> &ar_allWordAsStr
         NumberExtractor temp(ar_allWordAsString[i]);
         for (int f = 0; f < temp.getListOfNumberExtracted().size(); f++)
         {
-            listOfNumberExtracted.push_back(temp.getListOfNumberExtracted()[i]);
+            listOfNumberExtracted.push_back(temp.getListOfNumberExtracted()[f]);
+            listOfNumberStringExtracted.push_back(temp.getListOfNumberStringExtracted()[f]);
         }
+        listOfVectorStringExtractedNumber.push_back(temp.getListOfNumberExtracted());
+        listOfVectorStringExtractedString.push_back(temp.getListOfNumberStringExtracted());
     }
 };
 
@@ -235,6 +238,17 @@ std::vector<std::string> NumberExtractor::getListOfNumberStringExtracted() const
 {
     return listOfNumberStringExtracted;
 };
+
+std::vector<std::vector<std::string>> NumberExtractor::getListOfVectorStringExtractedNumber() const
+{
+    return listOfVectorStringExtractedNumber;
+};
+
+std::vector<std::vector<std::string>> NumberExtractor::getListOfVectorStringExtractedString() const
+{
+    return listOfVectorStringExtractedString;
+};
+;
 
 bool NumberExtractor::IfWordIsNumber(std::map<std::string, int> m, std::string word)
 {
@@ -257,6 +271,7 @@ bool NumberExtractor::EndsWith(const std::string &mainStr, const std::string &to
 
 bool NumberExtractor::PerformFullExtraction()
 {
+
     try
     {
         std::string numberBeforeDecStr = "";

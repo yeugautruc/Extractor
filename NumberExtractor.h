@@ -107,12 +107,16 @@ public:
     bool IfWordIsNumber(std::map<std::string, int> m, std::string word);
     std::vector<std::string> getListOfNumberExtracted() const;
     std::vector<std::string> getListOfNumberStringExtracted() const;
+    std::vector<std::vector<std::string>>  getListOfVectorStringExtractedNumber() const;
+    std::vector<std::vector<std::string>>  getListOfVectorStringExtractedString() const;
 
 private:
     /* data */
     int indexOfListNumberExtracted;
     std::vector<std::string> listOfNumberExtracted;
     std::vector<std::string> listOfNumberStringExtracted;
+    std::vector<std::vector<std::string>> listOfVectorStringExtractedNumber;
+    std::vector<std::vector<std::string>> listOfVectorStringExtractedString;
     std::vector<NumberExtractor::ExtractedNumber> m_extractedNumberSeq;
     std::string trim(std::string s);
     std::string ltrim(std::string s);
