@@ -139,5 +139,32 @@ int main()
 	std::cout << "test 0: " << ((test0()) ? "true" : "false") << std::endl;
 	std::cout << "testExtractDecimalNumber: " << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
 	std::cout << "testExtractNumberThousand: " << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
-	
+
+	vector<string> wordSeq = {
+		"dobry den sky_travel five eight juliert ruzyne radar radar contact"
+		" on present heading descend four thousand feet qnh one zero two two",
+		"jet_execute five two seven turn right heading three five zero vectoring for "
+		"ils approach runway two four hour and descend five thousand feet qnh one zero one two",
+		"good day vueling eight six five two praha radar radar contact "
+		"descend flight level one zero zero current information is quebec and speed"
+		"two seventy or less",
+
+		"oscar kilo victor india kilo roger descend three thousand five hundred feet"
+		"squawk seven thousand",
+
+		"csa six six nine descend flight level one hundred turn left"
+		"heading zero six five",
+
+		"snow cab two hundred one descend eight thousand feet",
+		"snow cab two hundred twenty one descend eight thousand six hundred feet",
+		"snow cab two hundred twenty four",
+		"descend eight thousand six hundred twenty one feet",
+
+		"austrian three nine two papa descend altitude one zero thousand "
+		"qnh one zero zero three",
+
+		"contact director one one nine dummy eight goodbye"};
+	NumberExtractor numEx1(wordSeq);
+	numEx1.PerformFullExtraction();
+	std::cout << "extracted: " << numEx1.GetExtractedNumbersCnt();
 }

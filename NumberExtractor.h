@@ -59,7 +59,7 @@ public:
     // the numbers are extracted from ar_allWordAsString
     // starting after the word startIndexExtractionAfter, first word starts at index in vector 0
     NumberExtractor(const std::vector<std::string> &ar_allWordAsString,
-                    int startIndexExtractionAfter);
+                    int startIndexExtractionAfter = -1);
 
     //  extracts all number from member mstr_wordSeq and insert into member m_extractedNumberSeq
     bool PerformFullExtraction();
