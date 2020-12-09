@@ -3,6 +3,7 @@
 #include "vector"
 #include "map"
 #include "iterator"
+#include <algorithm>
 #include <iostream>
 #include <sstream>
 
@@ -66,13 +67,54 @@ public:
     // extracts the next complete number from sequence of wors provide in constructor
     ExtractedNumber ExtractNextFullNumber();
 
+    // how many numbers are extracted from string provided in constructor
+    int GetExtractedNumbersCnt() const
+    {
+        return static_cast<int>(m_extractedNumberSeq.size());
+    }
+
+    // return extracted number with index as an interger (throws exception if index invalid)
+    int GetNumberAsInt(int index) const
+    {
+        return m_extractedNumberSeq.at(index).GetExtractedNumberAsInt();
+    }
+
+    // return extracted number with index as a floating point (throws exception if index invalid)
+    double GetNumberAsDouble(int index) const
+    {
+        return m_extractedNumberSeq.at(index).GetExtractedNumberAsDouble();
+    }
+
+    // is extracted number with index a valid number (throws exception if index invalid)
+    bool IsNumberValid(int index) const
+    {
+        return m_extractedNumberSeq.at(index).IsExtractedNumberValid();
+    }
+
+    // is extracted number with index a valid interger? (throws exception if index invalid)
+    bool IsNumberInt(int index) const
+    {
+        return IsNumberValid(index) && m_extractedNumberSeq.at(index).IsExtractedNumberAnInt();
+    }
+
+    // is extracted number with index a valid floating point number? (throws exception if index invalid)
+    bool IsNumberDouble(int index) const
+    {
+        return IsNumberValid(index) && !m_extractedNumberSeq.at(index).IsExtractedNumberAnInt();
+    }
+
     bool EndsWith(const std::string &mainStr, const std::string &toMatch);
     bool IfWordIsNumber(std::map<std::string, int> m, std::string word);
     std::vector<std::string> getListOfNumberExtracted() const;
+    std::vector<std::string> getListOfNumberStringExtracted() const;
 
 private:
     /* data */
     int indexOfListNumberExtracted;
     std::vector<std::string> listOfNumberExtracted;
-    std::vector<ExtractedNumber> m_extractedNumberSeq;
+    std::vector<std::string> listOfNumberStringExtracted;
+    std::vector<NumberExtractor::ExtractedNumber> m_extractedNumberSeq;
+    std::string trim(std::string s);
+    std::string ltrim(std::string s);
+    std::string rtrim(std::string s);
 };
