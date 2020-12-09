@@ -136,12 +136,8 @@ bool testExtractDecimalNumber()
 int main()
 {
 	// std::cout << std::setprecision(4) << std::fixed;
-	std::cout << "test 0: ";
-	std::cout << ((test0()) ? "true" : "false") << std::endl;
-
-	std::cout << "testExtractDecimalNumber: ";
-	std::cout << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
-
-	std::cout << "testExtractNumberThousand: ";
-	std::cout << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
+	std::cout << "test 0: " << ((test0()) ? "true" : "false") << std::endl;
+	std::cout << "testExtractDecimalNumber: " << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
+	std::cout << "testExtractNumberThousand: " << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
+	
 }
