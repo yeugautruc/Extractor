@@ -6,7 +6,6 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
     conv["zero"] = 0;
     conv["decimal"] = 222;
     conv["point"] = 222;
-    conv["dummy"] = 222;
 
     conv["one"] = 1;
     conv["two"] = 2;
