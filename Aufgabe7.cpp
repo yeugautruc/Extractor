@@ -77,6 +77,22 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq)
 	}
 }
 
+void Read_AtcoCommand_And_Perform_Number_Extractor_And_Output(string url)
+{
+	ReadAtCoCommand atco1 = ReadAtCoCommand(url);
+	cout << "Number from utterances of file: '" << url << "':\n";
+	vector<string> wordSeqFromAtco1 = {};
+	for (int i = 0; i < atco1.getOutputAtcoCommand().getDynAtcoCommands().getSize(); i++)
+	{
+		if (atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence().length() > 1)
+		{
+			wordSeqFromAtco1.push_back(atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence());
+		}
+	}
+
+	Perform_Number_Extractor_And_Output(wordSeqFromAtco1);
+}
+
 bool test0()
 {
 	string utter = "fly_niki six hundred zulu contact tower now "
@@ -219,18 +235,5 @@ int main()
 	cout << "\n<==============devider=============>\n\n";
 	Perform_Number_Extractor_And_Output(wordSeq2);
 	cout << "\n<==============devider=============>\n\n";
-
-	string url = "./AtcoCommand/longTest.txt";
-	ReadAtCoCommand atco1 = ReadAtCoCommand(url);
-	cout << "Number from utterances of file: '" << url << "':\n";
-	vector<string> wordSeqFromAtco1 = {};
-	for (int i = 0; i < atco1.getOutputAtcoCommand().getDynAtcoCommands().getSize(); i++)
-	{
-		if (atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence().length() > 1)
-		{
-			wordSeqFromAtco1.push_back(atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence());
-		}
-	}
-
-	Perform_Number_Extractor_And_Output(wordSeqFromAtco1);
+	Read_AtcoCommand_And_Perform_Number_Extractor_And_Output("./AtcoCommand/longTest.txt");
 }
