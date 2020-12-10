@@ -26,7 +26,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
     conv["sixteen"] = 16;
     conv["seventeen"] = 17;
     conv["eighteen"] = 18;
-    conv["ninteen"] = 19;
+    conv["nineteen"] = 19;
 
     conv["thousand"] = 1000;
     conv["hundred"] = 100;
@@ -58,6 +58,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 numsExtracted.push_back(number / 10);
                 numsExtracted.push_back(10);
                 hasEndTy = true;
+                stringSeq = stringSeq + " " + word;
                 continue;
             }
             if (!hasEndTy)
@@ -144,6 +145,19 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 break;
             case 1000:
                 afterThousand = true;
+                // if (i < numsExtracted.size() - 2)
+                // {
+                //     if (numsExtracted[i + 1] != 404 && numsExtracted[i + 2] != 404)
+                //     {
+                //         result = result + "0";
+                //         break;
+                //     }
+                //     if (numsExtracted[i + 1] != 404)
+                //     {
+                //         result = result + "00";
+                //         break;
+                //     }
+                // }
                 result = result + "000";
                 break;
             case 222:
@@ -159,37 +173,28 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                             result.erase(result.length() - 1, 1);
                         }
                     }
-                    if (result != "" && result.length() > 3)
-                    {
-                        if (result.substr(result.length() - 3, result.length()) == "000")
-                        {
-
-                            if (i < numsExtracted.size() - 2)
-                            {
-                                if (numsExtracted[i + 1] != 404 && numsExtracted[i + 1] != 10 && numsExtracted[i + 1] != 100)
-                                {
-                                    result.erase(result.length() - 2, 2);
-                                    if (numsExtracted[i + 2] != 404)
-                                    {
-                                        result.erase(result.length() - 1, 1);
-                                    }
-                                }
-                            }
-                            else if (i < numsExtracted.size() - 1)
-                            {
-                                if (numsExtracted[i + 1] != 404 && numsExtracted[i + 1] != 10)
-                                {
-                                    result.erase(result.length() - 2, 2);
-                                }
-                            }
-                        }
-                    }
                 }
                 if (result != "" && numsExtracted[i] != 404 && i == numsExtracted.size() - 1 && numsExtracted[i - 1] != 0)
                 {
                     if (result.back() == '0')
                     {
                         result.erase(result.length() - 1, 1);
+                    }
+                }
+
+                // for special case
+                if (i > 1)
+                {
+                    if (numsExtracted[i - 1] == 0 and numsExtracted[i - 2] == 1000)
+                    {
+                        if (i == numsExtracted.size() - 1)
+                        {
+                            result.erase(result.length() - 1, 1);
+                        }
+                        if (i == numsExtracted.size() - 2)
+                        {
+                            result.erase(result.length() - 2, 2);
+                        }
                     }
                 }
 

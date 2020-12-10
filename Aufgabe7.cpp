@@ -1,4 +1,5 @@
 #include "NumberExtractor.h"
+#include "dosFarben.h"
 #include "fstream"
 #include "iostream"
 #include <iomanip>
@@ -23,7 +24,7 @@ NumberExtractor testForIntNumber(string wordSeq, vector<int> expNumber, bool &b_
 	{
 		if (expNumber[i] != output.GetNumberAsInt(i) || !output.IsNumberInt(i))
 		{
-			cout << "false3 #" << output.GetNumberAsInt(i) << "#" << endl;
+			cout << "false3 #" << output.GetNumberAsInt(i) << "#" << output.GetNumberAsString(i) << "#";
 			b_success = !expected;
 		}
 	}
@@ -47,7 +48,7 @@ NumberExtractor testForDecimalNumber(string wordSeq, vector<double> expNumber, b
 	{
 		if (expNumber[i] != output.GetNumberAsDouble(i) || !output.IsNumberDouble(i))
 		{
-			cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << endl;
+			cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << output.GetNumberAsString(i) << "#";
 			b_success = !expected;
 		}
 	}
@@ -55,16 +56,16 @@ NumberExtractor testForDecimalNumber(string wordSeq, vector<double> expNumber, b
 	return output;
 }
 
-void readWordSeqAndPrintOutput(vector<string> wordSeq)
+void Perform_Number_Extractor_And_Output(vector<string> wordSeq)
 {
 	NumberExtractor numEx1(wordSeq);
 	numEx1.PerformFullExtraction();
 	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
 	{
-		std::cout <<"\""<< wordSeq[i] << "\""<<" is result in: "<<std::endl;
+		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
 		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
 		{
-			std::cout << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
+			std::cout << blue << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
 			std::cout << numEx1.getListOfVectorStringExtractedString()[i][f] << "  ";
 		}
 		std::cout << std::endl;
@@ -130,7 +131,25 @@ bool testExtractNumberThousand()
 	NumberExtractor numEx5 =
 		testForIntNumber(wordSeq5, expNumbers5, b_success5, true);
 
-	return b_success && b_success2 && b_success3 && b_success4 && b_success5;
+	string wordSeq6 = "on qnh one zero zero nine";
+	vector<int> expNumbers6 = {1009};
+	bool b_success6 = true;
+	NumberExtractor numEx6 =
+		testForIntNumber(wordSeq6, expNumbers6, b_success6, true);
+
+	string wordSeq7 = "ils two four hour and descend five thousand feet qnh one zero one two ";
+	vector<int> expNumbers7 = {24, 5000, 1012};
+	bool b_success7 = true;
+	NumberExtractor numEx7 =
+		testForIntNumber(wordSeq7, expNumbers7, b_success7, true);
+
+	string wordSeq8 = "on qnh two hundred four";
+	vector<int> expNumbers8 = {204};
+	bool b_success8 = true;
+	NumberExtractor numEx8 =
+		testForIntNumber(wordSeq8, expNumbers8, b_success8, true);
+
+	return b_success && b_success2 && b_success3 && b_success4 && b_success5 && b_success6 && b_success7 && b_success8;
 }
 
 bool testExtractDecimalNumber()
@@ -151,10 +170,13 @@ bool testExtractDecimalNumber()
 
 int main()
 {
-	// std::cout << std::setprecision(4) << std::fixed;
-	std::cout << "test 0: " << ((test0()) ? "true" : "false") << std::endl;
-	std::cout << "testExtractDecimalNumber: " << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
-	std::cout << "testExtractNumberThousand: " << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
+	//Test
+	std::cout << "Test start! " << std::endl;
+	std::cout << "		Test 0: " << ((test0()) ? "true" : "false") << std::endl;
+	std::cout << "		TestExtractDecimalNumber: " << ((testExtractDecimalNumber()) ? "true" : "false") << std::endl;
+	std::cout << "		TestExtractNumberThousand: " << ((testExtractNumberThousand()) ? "true" : "false") << std::endl;
+	std::cout << "Test end! \n"
+			  << std::endl;
 
 	vector<string> wordSeq = {
 		"dobry den sky_travel five eight juliert ruzyne radar radar contact"
@@ -186,10 +208,9 @@ int main()
 		"snow cab two hundred twenty one descend eight thousand six hundred feet",
 		"snow cab two hundred twenty four descend eight thousand six hundred twenty one feet",
 		"austrian three nine two papa descend altitude one zero thousand qnh one zero zero three",
-		"contact director one one nine dummy eight goodbye"
-	};
-		// read word sequence and get output
-		readWordSeqAndPrintOutput(wordSeq);
-		cout<<"<===========devider==========>"<<endl;
-		readWordSeqAndPrintOutput(wordSeq2);
+		"contact director one one nine dummy eight goodbye"};
+
+	Perform_Number_Extractor_And_Output(wordSeq);
+	cout << "<==============devider=============>" << endl;
+	Perform_Number_Extractor_And_Output(wordSeq2);
 }

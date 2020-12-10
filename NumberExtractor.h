@@ -73,6 +73,12 @@ public:
         return static_cast<int>(m_extractedNumberSeq.size());
     }
 
+    // return extracted string with index as an interger (throws exception if index invalid)
+    std::string GetNumberAsString(int index) const
+    {
+        return m_extractedNumberSeq.at(index).GetNumberStringSeq();
+    }
+
     // return extracted number with index as an interger (throws exception if index invalid)
     int GetNumberAsInt(int index) const
     {
@@ -107,8 +113,8 @@ public:
     bool IfWordIsNumber(std::map<std::string, int> m, std::string word);
     std::vector<std::string> getListOfNumberExtracted() const;
     std::vector<std::string> getListOfNumberStringExtracted() const;
-    std::vector<std::vector<std::string>>  getListOfVectorStringExtractedNumber() const;
-    std::vector<std::vector<std::string>>  getListOfVectorStringExtractedString() const;
+    std::vector<std::vector<std::string>> getListOfVectorStringExtractedNumber() const;
+    std::vector<std::vector<std::string>> getListOfVectorStringExtractedString() const;
 
 private:
     /* data */
