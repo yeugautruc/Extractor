@@ -55,6 +55,22 @@ NumberExtractor testForDecimalNumber(string wordSeq, vector<double> expNumber, b
 	return output;
 }
 
+void readWordSeqAndPrintOutput(vector<string> wordSeq)
+{
+	NumberExtractor numEx1(wordSeq);
+	numEx1.PerformFullExtraction();
+	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
+	{
+		std::cout <<"\""<< wordSeq[i] << "\""<<" is result in: "<<std::endl;
+		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
+		{
+			std::cout << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
+			std::cout << numEx1.getListOfVectorStringExtractedString()[i][f] << "  ";
+		}
+		std::cout << std::endl;
+	}
+}
+
 bool test0()
 {
 	string utter = "fly_niki six hundred zulu contact tower now "
@@ -164,15 +180,16 @@ int main()
 		"qnh one zero zero three ",
 
 		"contact director one one nine dummy eight goodbye"};
-	NumberExtractor numEx1(wordSeq);
-	numEx1.PerformFullExtraction();
-	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
-	{
-		std::cout << wordSeq[i] << std::endl;
-		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
-		{
-			std::cout << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
-		}
-		std::cout << std::endl;
-	}
+
+	vector<string> wordSeq2 = {
+		"snow cab two hundred on descend eight thousand feet",
+		"snow cab two hundred twenty one descend eight thousand six hundred feet",
+		"snow cab two hundred twenty four descend eight thousand six hundred twenty one feet",
+		"austrian three nine two papa descend altitude one zero thousand qnh one zero zero three",
+		"contact director one one nine dummy eight goodbye"
+	};
+		// read word sequence and get output
+		readWordSeqAndPrintOutput(wordSeq);
+		cout<<"<===========devider==========>"<<endl;
+		readWordSeqAndPrintOutput(wordSeq2);
 }

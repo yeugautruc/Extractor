@@ -92,19 +92,19 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
     }
 
     int out = 0;
-    bool zeroStartNumber = true;
+    // bool zeroStartNumber = true;
     bool afterThousand = false;
     std::string result = "";
     for (int i = 0; i < numsExtracted.size(); i++)
     {
         out = numsExtracted[i];
-        if (out == 0 && zeroStartNumber)
-        {
-            continue;
-        }
+        // if (out == 0 && zeroStartNumber)
+        // {
+        //     continue;
+        // }
         if (out != 404)
         {
-            zeroStartNumber = false;
+            // zeroStartNumber = false;
             switch (out)
             {
             case 0:
@@ -113,7 +113,8 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                     afterThousand = false;
                     break;
                 }
-                if (!zeroStartNumber)
+                // if (!zeroStartNumber)
+                if (result != "")
                 {
                     result = result + "0";
                 }
@@ -165,7 +166,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
 
                             if (i < numsExtracted.size() - 2)
                             {
-                                if (numsExtracted[i + 1] != 404 && numsExtracted[i + 1] != 10)
+                                if (numsExtracted[i + 1] != 404 && numsExtracted[i + 1] != 10 && numsExtracted[i + 1] != 100)
                                 {
                                     result.erase(result.length() - 2, 2);
                                     if (numsExtracted[i + 2] != 404)
@@ -184,7 +185,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                         }
                     }
                 }
-                if (result != "" && numsExtracted[i] != 404 && i == numsExtracted.size() - 1)
+                if (result != "" && numsExtracted[i] != 404 && i == numsExtracted.size() - 1 && numsExtracted[i - 1] != 0)
                 {
                     if (result.back() == '0')
                     {
@@ -205,7 +206,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 listOfNumberExtracted.push_back(result);
             }
             result = "";
-            zeroStartNumber = true;
+            // zeroStartNumber = true;
             afterThousand = false;
         }
     }
