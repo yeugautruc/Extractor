@@ -1,0 +1,206 @@
+2016-07-12__08-31-49-00:
+   austrian one two nine foxtrot contact wien radar one two eight decimal seven wiederhoeren
+   AUA129F CONTACT RADAR
+   AUA129F CONTACT_FREQUENCY 128.700
+2016-07-12__08-33-39-01:
+   gruess gott ryan_air seven seven delta kilo in radar contact
+   RYR77DK INIT_RESPONSE
+2016-07-12__08-33-49-01:
+   standby
+   NO_CALLSIGN NO_CONCEPT
+2016-07-12__08-34-08-02:
+   ryan_air seven seven delta kilo direct to detsa
+   RYR77DK DIRECT_TO DETSA sone
+2016-07-12__08-34-41-03:
+   gruess gott foxtrot romeo foxtrot four zero one maintain flight level two four zero
+   FRF401 MAINTAIN ALTITUDE 240 FL
+2016-07-12__08-34-48-03:
+   croatia four four one climb flight level two three zero
+   CTN441 CLIMB 230 FL
+2016-07-12__08-35-39-04:
+   ryan_air eight one bravo alpha contact wien radar one two nine decimal zero five zero wiederhoeren
+   RYR81BA CONTACT RADAR
+   RYR81BA CONTACT_FREQUENCY 129.050
+2016-07-12__08-36-08-05:
+   ryan_air seven seven delta kilo contact wien radar one three four decimal four four zero wiederhoeren
+   RYR77DK CONTACT RADAR
+   RYR77DK CONTACT_FREQUENCY 134.440
+2016-07-12__08-36-25-06:
+   croatia four four one contact budapest radar one three three decimal two wiederhoeren
+   CTN441 CONTACT BUDAPEST_RADAR
+   CTN441 CONTACT_FREQUENCY 133.200
+2016-07-12__08-37-12-07:
+   gruess gott air_france one three nine tango identified climb flight level two two zero no speed restriction
+   AFR139T NO_SPEED_RESTRICTIONS
+   AFR139T CLIMB 220 FL
+2016-07-12__08-37-28-08:
+   gruess gott niki seven eight five juliett expect ils approach three four balad three november transition descend flight level one four zero
+   NLY785J EXPECT ILS 34
+   NLY785J TRANSITION BALAD_3N
+   NLY785J DESCEND 140 FL
+2016-07-12__08-37-43-08:
+   air_france one three nine tango when passing six thousand feet direct to renka
+   AFR139T ftITUDE 6000 ft
+   AFR139T DIRECT_TO RENKA none WHEN ALTITUDE 6000 ft
+2016-07-12__08-38-34-09:
+   gruess gott austrian triple seven sierra identified climb flight level two three zero
+   AUA777S CLIMB 230 FL
+2016-07-12__08-38-41-09:
+   niki seven eight five juliett direct whisky whisky nine seven three descend nine thousand feet qnh one zero one four
+   NLY785J DIRECT_TO WW973 none
+   NLY785J DESCEND 9000 ft
+   NLY785J INFORMATION QNH 1014
+2016-07-12__08-39-48-10:
+   austrian seven seven seven sierra when passing six thousand feet direct to vebal
+   AUA777S ftITUDE 6000 ft  
+   AUA777S DIRECT_TO VEBAL none WHEN ALTITUDE 6000 ft
+2016-07-12__08-40-11-11:
+   niki seven eight five juliett descend seven thousand feet
+   NLY785J DESCEND 7000 ft
+2016-07-12__08-40-33-12:
+   air_france one three nine tango climb flight level two four zero
+   AFR139T CLIMB 240 FL
+2016-07-12__08-40-47-13:
+   servus austrian eight zero one zoulou identified climb flight level two three zero
+   AUA801Z CLIMB 230 FL
+2016-07-12__08-42-09-14:
+   gruess gott austrian seven seven nine mike identified climb flight level one three zero
+   AUA779M CLIMB 130 FL
+2016-07-12__08-42-26-15:
+   niki seven eight five juliett direct whisky whisky nine seven one descend six thousand feet
+   NLY785J DIRECT_TO WW971 none
+   NLY785J DESCEND 6000 ft
+2016-07-12__08-42-38-16:
+   air_france one three nine tango contact wien radar one two eight decimal seven wiederhoeren
+   AFR139T CONTACT RADAR
+   AFR139T CONTACT_FREQUENCY 128.700
+2016-07-12__08-42-46-16:
+   austrian eight zero one zoulou direct sasal
+   AUA801Z DIRECT_TO SASAL none
+2016-07-12__08-42-59-17:
+   austrian seven seven seven sierra contact budapest radar one three three decimal two wiederhoeren
+   AUA777S CONTACT BUDAPEST_RADAR
+   AUA777S CONTACT_FREQUENCY 133.200
+2016-07-12__08-43-44-18:
+   niki seven eight five juliett descend four thousand feet
+   NLY785J DESCEND 4000 ft
+2016-07-12__08-43-55-19:
+   austrian eight zero one zoulou direct babit
+   AUA801Z DIRECT_TO BABIT none
+2016-07-12__08-44-01-19:
+   foxtrot romeo foxtrot four zero one contact wien radar one two eight decimal seven bye bye
+   FRF401 CONTACT RADAR
+   FRF401 CONTACT_FREQUENCY 128.700
+2016-07-12__08-44-34-20:
+   niki seven eight five juliett descend three thousand feet cleared ils three four the only speed restriction you have is cross four miles final one speed one sixty
+   NLY785J DESCEND 3000 ft
+   NLY785J CLEARED ILS 34
+2016-07-12__08-44-56-21:
+   austrian seven seven nine mike climb flight level two three zero
+   AUA779M CLIMB 230 FL
+2016-07-12__08-45-02-21:
+   austrian eight zero one zoulou contact budapest radar one three three decimal two wiederhoeren
+   AUA801Z CONTACT BUDAPEST_RADAR
+   AUA801Z CONTACT_FREQUENCY 133.200
+2016-07-12__08-46-58-22:
+   austrian seven seven nine mike contact budapest radar one three three decimal two wiederhoeren
+   AUA779M CONTACT BUDAPEST_RADAR
+   AUA779M CONTACT_FREQUENCY 133.200
+2016-07-12__08-47-04-22:
+   niki seven eight five juliett contact wien tower one two three decimal eight wiederhoeren
+   NLY785J CONTACT TOWER
+   NLY785J CONTACT_FREQUENCY 123.800
+2016-07-12__08-49-13-23:
+   gruess gott lupus one one zero expect ils approach three four no speed restriction and turn right heading zero one zero vectors for approach
+   AYY110 EXPECT_ILS 34
+   AYY110 NO_SPEED_RESTRICTIONS
+   AYY110 HEADING 010 RIGHT
+2016-07-12__08-49-31-24:
+   lupus one one zero descend flight level one two zero
+   AYY110 DESCEND 120 FL
+2016-07-12__08-49-58-25:
+   gruess gott austrian eight six three charly identified climb flight level two three zero
+   AUA863C CLIMB 230 FL
+2016-07-12__08-51-01-26:
+   lupus one one zero direct whisky whisky nine seven one and descend flight level correction descend seven thousand feet qnh one zero one four
+   AYY110 DIRECT_TO WW971 none 
+   AYY110 DESCEND 7000 ft
+   AYY110 INFORMATION QNH 1014
+2016-07-12__08-51-26-27:
+   servus austrian seven nine five quebec identified climb flight level one three zero
+   AUA795Q CLIMB 130 FL
+2016-07-12__08-51-46-28:
+   austrian eight six three charly direct babit
+   AUA863C DIRECT_TO BABIT none 
+2016-07-12__08-52-48-29:
+   gruess gott austrian eight five three alpha identified climb flight level one two zero
+   AUA853A CLIMB 120 FL
+2016-07-12__08-53-13-30:
+   gruess gott austrian five one two papa expect ils approach three four balad three november transition
+   AUA512P EXPECT_ILS 34
+   AUA512P TRANSITION BALAD_3N
+2016-07-12__08-53-51-31:
+   lupus one one zero are you an actual ambulance and do you request priority
+   AYY110 NO_CONCEPT
+2016-07-12__08-54-07-32:
+   gruess gott austrian eight one lima identified climb flight level climb one zero thousand feet
+   AUA81L CLIMB 10000 ft
+2016-07-12__08-54-24-33:
+   gruess gott austrian two one two five expect ils approach three four balad three november transition ah sorry austrian two one two five continue climb to flight level one eight zero
+   AUA2125 CLIMB 180 FL
+2016-07-12__08-54-38-33:
+   lupus lupus one one zero descend six thousand feet
+   AYY110 DESCEND 6000 ft
+2016-07-12__08-54-44-33:
+   lupus one one zero report callsign only to wien radar one one nine decimal eight wiederhoeren
+   AYY110 CONTACT RADAR
+   AYY110 CONTACT_FREQUENCY 119.800
+2016-07-12__08-54-50-33:
+   austrian seven nine five quebec direct to babit climb flight level two three zero
+   AUA795Q DIRECT_TO BABIT none
+   AUA795Q CLIMB 230 FL
+2016-07-12__08-54-58-33:
+   negative austrian seven nine five quebec direct to babit climb flight level two three zero
+   AUA795Q DIRECT_TO BABIT none
+   AUA795Q CLIMB 230 FL
+2016-07-12__08-55-06-33:
+   austrian eight six three charly contact budapest radar one three three decimal two wiederhoeren
+   AUA863C CONTACT BUDAPEST_RADAR
+   AUA863C CONTACT_FREQUENCY 133.200
+2016-07-12__08-55-14-33:
+   austrian eight five three alpha climb flight level two three zero
+   AUA853A CLIMB 230 FL
+2016-07-12__08-55-19-33:
+   austrian five one two papa descend flight level one four zero
+   AUA512P DESCEND 140 FL
+2016-07-12__08-55-33-34:
+   gruess gott hotel bravo juliett kilo charly expect ils approach three four balad three november transition
+   HBJKC EXPECT_ILS 34
+   HBJKC TRANSITION BALAD_3N
+2016-07-12__08-55-49-35:
+   gruess gott austrian four six three delta identified climb flight level two four zero
+   AUA463D CLIMB 240 FL
+2016-07-12__08-55-57-35:
+   austrian seven nine five quebec contact budapest radar one three three decimal two wiederhoeren
+   AUA795Q CONTACT BUDAPEST_RADAR
+   AUA795Q CONTACT_FREQUENCY 133.200
+2016-07-12__08-56-04-35:
+   austrian eight one lima climb flight level one seven zero
+   AUA81L CLIMB 170 FL
+2016-07-12__08-56-10-35:
+   austrian five one two papa direct to whisky whisky nine eight zero and keep speed two seventy
+   AUA512P DIRECT_TO WW980 none
+   AUA512P SPEED 270 none
+2016-07-12__08-56-32-36:
+   tag austrian eight five seven tango identified climb flight level one four correction one five zero
+   AUA857T CLIMB 150 FL
+2016-07-12__08-56-40-36:
+   austrian five one two papa descend seven thousand feet qnh one zero one four
+   AUA512P DESCEND 7000 ft
+   AUA512P INFORMATION QNH 1014
+2016-07-12__08-57-16-37:
+   austrian two one two five climb flight level two four correction two five zero
+   AUA2125 CLIMB 250 FL
+2016-07-12__08-57-37-38:
+   gruess gott austrian nine one seven whisky identified climb flight level one six zero
+   AUA917W CLIMB 160 FL

@@ -1,0 +1,38 @@
+2019-02-15__11-32-02-00:
+   speedbird five two charlie victor praha radar radar contact climb   flight level one two zero
+   BAW52CV INIT_RESPONSE
+   BAW52CV CLIMB 120 FL
+2019-02-15__11-32-24-00:
+   scandinavian one seven six seven praha radar radar contact   descend flight level one hundred
+   SAS1767 INIT_RESPONSE  
+   SAS1767 DESCEND 100 FL
+2019-02-15__11-32-40-00:
+   b_air six one praha radar radar contact climb flight level one two zero
+   ABP61 INIT_RESPONSE
+   ABP61 CLIMB 120 FL
+2019-02-15__11-32-48-00:
+   speedbird five two charlie victor proceed direct to rapet
+   BAW52CV DIRECT_TO RAPET none
+2019-02-15__11-33-26-00:
+   speedbird five two charlie victor climb flight level one six zero
+   BAW52CV CLIMB 160 FL
+2019-02-15__11-33-44-00:
+   b_air six zero turn left proceed direct to nirgo
+   ABP60 DIRECT_TO NIRGO LEFT
+2019-02-15__11-33-55-00:
+   good morning
+   NO_CALLSIGN NO_CONCEPT
+2019-02-15__11-36-55-00:
+   lufthansa alfa bravo delta cleared ILS runway three four
+   DLHABD CLEARED ILS RW34
+2019-02-15__11-37-55-00:
+   lufthansa alfa bravo delta cleared RNAV approach runway three four
+   DLHABD CLEARED RNAV RW34
+2019-02-15__11-37-55-00:
+   lufthansa alfa bravo delta cleared RNAV approach runway three four qnh is one zero one six
+   DLHABD CLEARED RNAV RW34
+   DLHADB INFORMATION QNH 1016
+2019-02-15__11-38-55-00:
+   lufthansa triple nine alfa good morning radar contact kilo is correct
+   DLH999A INIT_RESPONSE
+   DLHADB INFORMATION ATIS K

@@ -4,6 +4,7 @@
 #include "iostream"
 #include <iomanip>
 #include "math.h"
+#include "./AtcoCommand/ReadAtCoCommand.h"
 using namespace std;
 
 NumberExtractor testForIntNumber(string wordSeq, vector<int> expNumber, bool &b_success, bool expected)
@@ -63,10 +64,14 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq)
 	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
 	{
 		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
+		if (numEx1.getListOfVectorStringExtractedNumber()[i].size() == 0)
+		{
+			cout << " No numbers extracted!";
+		}
 		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
 		{
 			std::cout << blue << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
-			std::cout << numEx1.getListOfVectorStringExtractedString()[i][f] << "  ";
+			// std::cout << numEx1.getListOfVectorStringExtractedString()[i][f] << "  ";
 		}
 		std::cout << std::endl;
 	}
@@ -211,6 +216,21 @@ int main()
 		"contact director one one nine dummy eight goodbye"};
 
 	Perform_Number_Extractor_And_Output(wordSeq);
-	cout << "<==============devider=============>" << endl;
+	cout << "\n<==============devider=============>\n\n";
 	Perform_Number_Extractor_And_Output(wordSeq2);
+	cout << "\n<==============devider=============>\n\n";
+
+	string url = "./AtcoCommand/longTest.txt";
+	ReadAtCoCommand atco1 = ReadAtCoCommand(url);
+	cout << "Number from utterances of file: '" << url << "':\n";
+	vector<string> wordSeqFromAtco1 = {};
+	for (int i = 0; i < atco1.getOutputAtcoCommand().getDynAtcoCommands().getSize(); i++)
+	{
+		if (atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence().length() > 1)
+		{
+			wordSeqFromAtco1.push_back(atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence());
+		}
+	}
+
+	Perform_Number_Extractor_And_Output(wordSeqFromAtco1);
 }

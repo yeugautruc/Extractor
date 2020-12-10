@@ -1,0 +1,17 @@
+2019-02-15__11-32-02-00:
+   speedbird five two charlie climb flight level two two zero  
+   BAW52CV INIT_RESPONSE
+   BAW52CV CLIMB 120 FL
+2019-02-15__11-33-55-00:
+   good morning charlie
+   NO_CALLSIGN NO_CONCEPT
+2016-08-12__08-37-28-08:
+   niki seven eight four correction niki seven five juliett expect ils approach two correction three four balad three charly correction three november transition descend flight level one correction two four zero reduce two four zero knots
+   NLY785J CORRECTION
+   NLY785J EXPECT ILS 34
+   NLY785J CORRECTION
+   NLY785J TRANSITION BALAD_3N
+   NLY785J CORRECTION
+   NLY785J DESCEND 240 FL
+   NLY785J REDUCE 240 kn
+

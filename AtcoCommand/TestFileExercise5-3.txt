@@ -1,0 +1,32 @@
+2016-07-12__08-37-28-08:
+   gruess gott niki seven eight four correction niki seven five juliett expect ils approach two correction three four balad three charly correction three november transition descend flight level one correction two four zero reduce two four zero knots
+   NLY785J CORRECTION
+   NLY785J EXPECT ILS 34
+   NLY785J CORRECTION
+   NLY785J TRANSITION BALAD_3N
+   NLY785J CORRECTION
+   NLY785J DESCEND 240 FL
+2016-07-12__08-37-43-08:
+   air_france one three nine tango when passing six thousand feet direct to renka
+   AFR139T ftITUDE 6000 ft
+   AFR139T DIRECT_TO RENKA none WHEN ALTITUDE 6000 ft
+2016-07-12__08-38-34-09:
+   gruess gott austrian triple seven sierra identified climb flight level two three zero
+   AUA777S CLIMB 230 FL
+2016-07-12__08-38-41-09:
+   niki seven eight five juliett direct whisky whisky nine seven three descend nine thousand feet qnh one zero one four
+   NLY785J DIRECT_TO WW973 none
+   NLY785J DESCEND 9000 ft
+   NLY785J INFORMATION QNH 1014
+2016-07-12__08-57-37-38:
+   gruess gott austrian nine one seven whisky identified climb flight level one six zero
+   AUA917W CLIMB 160 FL
+2016-08-12__08-37-28-08:
+   niki seven eight four correction niki seven five juliett expect ils approach two correction three four balad three charly correction three november transition descend flight level one correction two four zero reduce two four zero knots
+   NLY785J CORRECTION
+   NLY785J EXPECT ILS 34
+   NLY785J CORRECTION
+   NLY785J TRANSITION BALAD_3N
+   NLY785J CORRECTION
+   NLY785J DESCEND 240 FL
+   NLY785J REDUCE 240 kn

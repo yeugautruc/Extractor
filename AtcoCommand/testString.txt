@@ -1,0 +1,12 @@
+shortTest.txt
+The top20 type occurences specified in shortTest.txt
+1.          NO_CONCEPT:   1
+         INIT_RESPONSE:   1
+               DESCEND:   1
+                 CLIMB:   1
+
+shortTest.txt longTest.txt datetime testString
+15-2-2019-11:32:2
+
+
+
