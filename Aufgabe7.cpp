@@ -199,30 +199,37 @@ int main()
 	std::cout << "Test end! \n"
 			  << std::endl;
 
-	vector<string> wordSeq = {
-		"dobry den sky_travel five eight juliert ruzyne radar radar contact"
-		" on present heading descend four thousand feet qnh one zero two two",
-		"jet_execute five two seven turn right heading three five zero vectoring for "
-		"ils approach runway two four hour and descend five thousand feet qnh one zero one two ",
-		" good day vueling eight six five two praha radar radar contact "
-		"descend flight level one zero zero current information is quebec and speed "
-		"two seventy or less",
+	vector<string> testSeq = {
+		"one zero zero one hundred",
+	};
+	Perform_Number_Extractor_And_Output(testSeq);
+	std::cout << "\n<==============devider=============>\n\n";
 
-		"oscar kilo victor india kilo roger descend three thousand five hundred feet"
-		"squawk seven thousand",
+	vector<string>
+		wordSeq = {
+			"dobry den sky_travel five eight juliert ruzyne radar radar contact"
+			" on present heading descend four thousand feet qnh one zero two two",
+			"jet_execute five two seven turn right heading three five zero vectoring for "
+			"ils approach runway two four hour and descend five thousand feet qnh one zero one two ",
+			" good day vueling eight six five two praha radar radar contact "
+			"descend flight level one zero zero current information is quebec and speed "
+			"two seventy or less",
 
-		"csa six six nine descend flight level one hundred turn left"
-		"heading zero six five",
+			"oscar kilo victor india kilo roger descend three thousand five hundred feet"
+			"squawk seven thousand",
 
-		"snow cab two hundred one descend eight thousand feet",
-		"snow cab two hundred twenty one descend eight thousand six hundred feet",
-		"snow cab two hundred twenty four",
-		"descend eight thousand six hundred twenty one feet",
+			"csa six six nine descend flight level one hundred turn left"
+			"heading zero six five",
 
-		"austrian three nine two papa descend altitude one zero thousand "
-		"qnh one zero zero three ",
+			"snow cab two hundred one descend eight thousand feet",
+			"snow cab two hundred twenty one descend eight thousand six hundred feet",
+			"snow cab two hundred twenty four",
+			"descend eight thousand six hundred twenty one feet",
 
-		"contact director one one nine dummy eight goodbye"};
+			"austrian three nine two papa descend altitude one zero thousand "
+			"qnh one zero zero three ",
+
+			"contact director one one nine dummy eight goodbye"};
 
 	vector<string> wordSeq2 = {
 		"snow cab two hundred on descend eight thousand feet",
@@ -232,8 +239,8 @@ int main()
 		"contact director one one nine dummy eight goodbye"};
 
 	Perform_Number_Extractor_And_Output(wordSeq);
-	cout << "\n<==============devider=============>\n\n";
+	std::cout << "\n<==============devider=============>\n\n";
 	Perform_Number_Extractor_And_Output(wordSeq2);
-	cout << "\n<==============devider=============>\n\n";
+	std::cout << "\n<==============devider=============>\n\n";
 	Read_AtcoCommand_And_Perform_Number_Extractor_And_Output("./AtcoCommand/longTest.txt");
 }
