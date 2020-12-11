@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AtcoCommand">
+      <UniqueIdentifier>{e0f9111c-1c3f-45c8-bdcb-c1000457f7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AtcoCommand\Header Files">
+      <UniqueIdentifier>{ed6a3bef-fb6f-4887-9d80-d73c95959c9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AtcoCommand\Source Files">
+      <UniqueIdentifier>{3dca0ca7-94c9-47c8-8538-2f39bd67df58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AtcoCommand\Resource Files">
+      <UniqueIdentifier>{c3d2c028-40ad-423c-a456-cef5a5cc389f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="NumberExtractor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\AtcoCommand.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\Command.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\DynAtcoCommandArray.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\DynCommandArray.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\DynOcurrenceArray.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\FileName.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\Ocurrence.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\ReadAtCoCommand.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtcoCommand\UltilType.h">
+      <Filter>Source Files\AtcoCommand\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dosFarben.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Aufgabe7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtractedNumber.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberExtractor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\AtcoCommand.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\Command.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\DynAtcoCommandArray.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\DynCommandArray.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\DynOcurrenceArray.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\FileName.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\Ocurrence.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtcoCommand\UltilType.cpp">
+      <Filter>Source Files\AtcoCommand\Resource Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="AtcoCommand\BigWordSeqPlusCmdsFile.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+    <Text Include="AtcoCommand\expectedTypes.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+    <Text Include="AtcoCommand\longTest.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+    <Text Include="AtcoCommand\shortTest.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+    <Text Include="AtcoCommand\TestFileExercise5-3.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+    <Text Include="AtcoCommand\testString.txt">
+      <Filter>Source Files\AtcoCommand\Source Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

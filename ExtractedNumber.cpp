@@ -20,5 +20,5 @@ double NumberExtractor::ExtractedNumber::GetExtractedNumberAsDouble() const
 
 int NumberExtractor::ExtractedNumber::GetNumberOfStringForNumber() const
 {
-    return mstr_numberSeq.length();
+    return unsigned(mstr_numberSeq.length());
 };

@@ -1,7 +1,8 @@
 #include "NumberExtractor.h"
+#include <functional>
 NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtractionAfter)
 {
-    indexOfListNumberExtracted = 0;
+    indexOfListNumberExtracted = startIndexExtractionAfter +1;
     std::map<std::string, int> conv;
     conv["zero"] = 0;
     conv["decimal"] = 222;
@@ -96,7 +97,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
     // bool zeroStartNumber = true;
     bool afterThousand = false;
     std::string result = "";
-    for (int i = 0; i < numsExtracted.size(); i++)
+    for (int i = 0; unsigned(i) < unsigned(numsExtracted.size()); i++)
     {
         out = numsExtracted[i];
         // if (out == 0 && zeroStartNumber)
@@ -164,7 +165,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 result = result + ",";
                 break;
             default:
-                if (i < numsExtracted.size() - 1)
+                if (unsigned(i) <(unsigned(numsExtracted.size()) - 1))
                 {
                     if (result != "" && numsExtracted[i + 1] == 404)
                     {
@@ -174,7 +175,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                         }
                     }
                 }
-                if (result != "" && numsExtracted[i] != 404 && i == numsExtracted.size() - 1 && numsExtracted[i - 1] != 0)
+                if (result != "" && numsExtracted[i] != 404 && unsigned(i) == unsigned(numsExtracted.size()) - 1 && numsExtracted[i - 1] != 0)
                 {
                     if (result.back() == '0')
                     {
@@ -185,13 +186,13 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 // for special case
                 if (i > 1)
                 {
-                    if (numsExtracted[i - 1] == 0 and numsExtracted[i - 2] == 1000)
+                    if (numsExtracted[i - 1] == 0 && numsExtracted[i - 2] == 1000)
                     {
-                        if (i == numsExtracted.size() - 1)
+                        if (unsigned(i) == unsigned(numsExtracted.size()) - 1)
                         {
                             result.erase(result.length() - 1, 1);
                         }
-                        if (i == numsExtracted.size() - 2)
+                        if (unsigned(i) == unsigned(numsExtracted.size()) - 2)
                         {
                             result.erase(result.length() - 2, 2);
                         }
@@ -203,7 +204,7 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
             }
         }
         // if meet unknown
-        if (out == 404 || i == numsExtracted.size() - 1)
+        if (out == 404 || unsigned(i) == numsExtracted.size() - 1)
         {
             if (result != "")
             {
@@ -220,11 +221,11 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
 NumberExtractor::NumberExtractor(const std::vector<std::string> &ar_allWordAsString,
                                  int startIndexExtractionAfter)
 {
-    indexOfListNumberExtracted = 0;
-    for (int i = 0; i < ar_allWordAsString.size(); i++)
+    indexOfListNumberExtracted = startIndexExtractionAfter+1;
+    for (int i = 0; unsigned(i) < unsigned(ar_allWordAsString.size()); i++)
     {
         NumberExtractor temp(ar_allWordAsString[i]);
-        for (int f = 0; f < temp.getListOfNumberExtracted().size(); f++)
+        for (int f = 0;  unsigned(f) < unsigned(temp.getListOfNumberExtracted().size()); f++)
         {
             listOfNumberExtracted.push_back(temp.getListOfNumberExtracted()[f]);
             listOfNumberStringExtracted.push_back(temp.getListOfNumberStringExtracted()[f]);
@@ -281,7 +282,7 @@ bool NumberExtractor::PerformFullExtraction()
     {
         std::string numberBeforeDecStr = "";
         std::string numberAfterDecStr = "";
-        for (int i = 0; i < listOfNumberExtracted.size(); i++)
+        for (int i = 0; unsigned(i) < unsigned(listOfNumberExtracted.size()); i++)
         {
             if (listOfNumberExtracted[i].find(",") != -1)
             {
@@ -314,7 +315,7 @@ bool NumberExtractor::PerformFullExtraction()
 
 NumberExtractor::ExtractedNumber NumberExtractor::ExtractNextFullNumber()
 {
-    if (indexOfListNumberExtracted >= listOfNumberExtracted.size())
+    if (unsigned(indexOfListNumberExtracted) >= unsigned(listOfNumberExtracted.size()))
     {
         NumberExtractor::ExtractedNumber output = ExtractedNumber("", -1, -1);
         return output;

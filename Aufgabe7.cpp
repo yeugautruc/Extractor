@@ -1,9 +1,9 @@
 #include "NumberExtractor.h"
-#include "dosFarben.h"
 #include "fstream"
 #include "iostream"
 #include <iomanip>
 #include "math.h"
+#include "dosFarben.h"
 #include "./AtcoCommand/ReadAtCoCommand.h"
 using namespace std;
 
@@ -14,21 +14,26 @@ NumberExtractor testForIntNumber(string wordSeq, vector<int> expNumber, bool &b_
 	{
 		cout << "false1 #" << endl;
 		b_success = !expected;
-	};
+	}
 
-	if (output.GetExtractedNumbersCnt() != expNumber.size())
+	else if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
 	{
-		cout << "false2 #" << endl;
+		cout << "false2 #" << output.GetExtractedNumbersCnt() << "#" << expNumber.size() << "# ";
 		b_success = !expected;
 	}
-	for (int i = 0; i < expNumber.size(); i++)
+	else
 	{
-		if (expNumber[i] != output.GetNumberAsInt(i) || !output.IsNumberInt(i))
+		for (int i = 0; unsigned(i) < expNumber.size(); i++)
 		{
-			cout << "false3 #" << output.GetNumberAsInt(i) << "#" << output.GetNumberAsString(i) << "#";
-			b_success = !expected;
+			if (expNumber[i] != output.GetNumberAsInt(i) || !output.IsNumberInt(i))
+			{
+				cout << "false3 #" << output.GetNumberAsInt(i) << "#" << output.GetNumberAsString(i) << "#";
+				b_success = !expected;
+			}
 		}
 	}
+
+	b_success = expected;
 	return output;
 }
 
@@ -39,21 +44,23 @@ NumberExtractor testForDecimalNumber(string wordSeq, vector<double> expNumber, b
 	{
 		cout << "false1 #" << endl;
 		b_success = !expected;
-	};
-	if (output.GetExtractedNumbersCnt() != expNumber.size())
+	}
+	else if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
 	{
-		cout << "false2 #" << endl;
+		cout << "false2 #" << output.GetExtractedNumbersCnt() << "#" << expNumber.size() << "# ";
 		b_success = !expected;
 	}
-	for (int i = 0; i < expNumber.size(); i++)
+	else
 	{
-		if (expNumber[i] != output.GetNumberAsDouble(i) || !output.IsNumberDouble(i))
+		for (int i = 0; unsigned(i) < unsigned(expNumber.size()); i++)
 		{
-			cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << output.GetNumberAsString(i) << "#";
-			b_success = !expected;
+			if (expNumber[i] != output.GetNumberAsDouble(i) || !output.IsNumberDouble(i))
+			{
+				cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << output.GetNumberAsString(i) << "#";
+				b_success = !expected;
+			}
 		}
 	}
-
 	return output;
 }
 
@@ -61,17 +68,53 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq)
 {
 	NumberExtractor numEx1(wordSeq);
 	numEx1.PerformFullExtraction();
-	for (int i = 0; i < numEx1.getListOfVectorStringExtractedNumber().size(); i++)
+
+	for (int i = 0; unsigned(i) < unsigned(numEx1.getListOfVectorStringExtractedNumber().size()); i++)
 	{
 		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
 		if (numEx1.getListOfVectorStringExtractedNumber()[i].size() == 0)
 		{
-			cout << " No numbers extracted!";
+			printScreenColorOnceVal(cout, YELLOW_SCREEN_COLOR, " No numbers extracted!");
 		}
-		for (int f = 0; f < numEx1.getListOfVectorStringExtractedNumber()[i].size(); f++)
+		for (int f = 0; unsigned(f) < unsigned(numEx1.getListOfVectorStringExtractedNumber()[i].size()); f++)
 		{
-			std::cout << blue << numEx1.getListOfVectorStringExtractedNumber()[i][f] << "  ";
-			// std::cout << numEx1.getListOfVectorStringExtractedString()[i][f] << "  ";
+			printScreenColorOnceVal(cout, YELLOW_SCREEN_COLOR, numEx1.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+		}
+		std::cout << std::endl;
+	}
+}
+
+void Perform_Number_Extractor_And_Output(vector<string> wordSeq, vector<vector<int>> expectNumberToRead)
+{
+	NumberExtractor numEx(wordSeq);
+	numEx.PerformFullExtraction();
+	for (int i = 0; unsigned(i) < unsigned(numEx.getListOfVectorStringExtractedNumber().size()); i++)
+	{
+		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
+		if (numEx.getListOfVectorStringExtractedNumber()[i].size() == 0)
+		{
+			printScreenColorOnceVal(cout, GREEN_SCREEN_COLOR, " No numbers extracted!");
+		}
+		bool success = false;
+
+		string testString = "";
+		for (int k = 0; unsigned(k) < unsigned(numEx.getListOfVectorStringExtractedNumber()[i].size()); k++)
+		{
+			testString = testString + " and " + numEx.getListOfVectorStringExtractedString()[i][k];
+		}
+
+		NumberExtractor newNumEx = testForIntNumber(testString, expectNumberToRead[i], success, true);
+
+		for (int f = 0; unsigned(f) < unsigned(numEx.getListOfVectorStringExtractedNumber()[i].size()); f++)
+		{
+			if (success)
+			{
+				printScreenColorOnceVal(cout, GREEN_SCREEN_COLOR, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+			}
+			else
+			{
+				printScreenColorOnceVal(cout, RED_SCREEN_COLOR, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+			}
 		}
 		std::cout << std::endl;
 	}
@@ -90,7 +133,8 @@ void Read_AtcoCommand_And_Perform_Number_Extractor_And_Output(string url)
 		}
 	}
 
-	Perform_Number_Extractor_And_Output(wordSeqFromAtco1);
+	vector<vector<int>> expectToRead = {{52, 120}, {1767, 100}, {61, 120}, {52}, {52, 160}, {60}, {}, {34}, {34}, {34, 1016}, {9}};
+	Perform_Number_Extractor_And_Output(wordSeqFromAtco1, expectToRead);
 }
 
 bool test0()

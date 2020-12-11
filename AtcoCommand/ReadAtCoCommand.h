@@ -703,7 +703,7 @@ of d2 is correct assigned from d1 and have same size with d1.*/
 		else
 		{
 			// Read data and print out
-			readFileGetOutput(expect, output);
+			readFileGetOutput(expect, outputAtco);
 			// cout << "\n Result:" << endl;
 			// output.print();
 		}
@@ -711,9 +711,9 @@ of d2 is correct assigned from d1 and have same size with d1.*/
 
 	UltilType getOutputAtcoCommand()
 	{
-		return output;
+		return outputAtco;
 	}
 
 private:
-	UltilType output;
+	UltilType outputAtco;
 };
