@@ -3,9 +3,19 @@
 #include "iostream"
 #include <iomanip>
 #include "math.h"
-#include "dosFarben.h"
+#include <windows.h>
 #include "./AtcoCommand/ReadAtCoCommand.h"
 using namespace std;
+
+const int BLUE = 9, YELLOW = 14, PINK = 13, RED = 12, WHITE = 15, GREEN = 10, GRAY = 8;
+
+void cout_with_color(int k, string text)
+{
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, k);
+	cout << text;
+	SetConsoleTextAttribute(hConsole, WHITE);
+}
 
 NumberExtractor testForIntNumber(string wordSeq, vector<int> expNumber, bool &b_success, bool expected)
 {
@@ -71,14 +81,14 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq)
 
 	for (int i = 0; unsigned(i) < unsigned(numEx1.getListOfVectorStringExtractedNumber().size()); i++)
 	{
-		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
+		std::cout << "\"" << wordSeq[i] << "\" is result in: \n ";
 		if (numEx1.getListOfVectorStringExtractedNumber()[i].size() == 0)
 		{
-			printScreenColorOnceVal(cout, YELLOW_SCREEN_COLOR, " No numbers extracted!");
+			cout_with_color(YELLOW, "No numbers extracted!");
 		}
 		for (int f = 0; unsigned(f) < unsigned(numEx1.getListOfVectorStringExtractedNumber()[i].size()); f++)
 		{
-			printScreenColorOnceVal(cout, YELLOW_SCREEN_COLOR, numEx1.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+			cout_with_color(YELLOW, numEx1.getListOfVectorStringExtractedNumber()[i][f] + "  ");
 		}
 		std::cout << std::endl;
 	}
@@ -90,10 +100,10 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq, vector<vector<i
 	numEx.PerformFullExtraction();
 	for (int i = 0; unsigned(i) < unsigned(numEx.getListOfVectorStringExtractedNumber().size()); i++)
 	{
-		std::cout << "\"" << wordSeq[i] << "\" is result in: " << std::endl;
+		std::cout << "\"" << wordSeq[i] << "\" is result in: \n ";
 		if (numEx.getListOfVectorStringExtractedNumber()[i].size() == 0)
 		{
-			printScreenColorOnceVal(cout, GREEN_SCREEN_COLOR, " No numbers extracted!");
+			cout_with_color(GREEN, "No numbers extracted!");
 		}
 		bool success = false;
 
@@ -109,11 +119,11 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq, vector<vector<i
 		{
 			if (success)
 			{
-				printScreenColorOnceVal(cout, GREEN_SCREEN_COLOR, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+				cout_with_color(GREEN, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
 			}
 			else
 			{
-				printScreenColorOnceVal(cout, RED_SCREEN_COLOR, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
+				cout_with_color(RED, numEx.getListOfVectorStringExtractedNumber()[i][f] + "  ");
 			}
 		}
 		std::cout << std::endl;
