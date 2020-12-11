@@ -7,12 +7,12 @@
 #include "./AtcoCommand/ReadAtCoCommand.h"
 using namespace std;
 
-const int BLUE = 9, YELLOW = 14, PINK = 13, RED = 12, WHITE = 15, GREEN = 10, GRAY = 8;
+const unsigned short BLUE = 9, YELLOW = 14, PINK = 13, RED = 12, WHITE = 15, GREEN = 10, GRAY = 8;
 
-void cout_with_color(int k, string text)
+void cout_with_color(unsigned short color, string text)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, k);
+	SetConsoleTextAttribute(hConsole, color);
 	cout << text;
 	SetConsoleTextAttribute(hConsole, WHITE);
 }
@@ -130,7 +130,7 @@ void Perform_Number_Extractor_And_Output(vector<string> wordSeq, vector<vector<i
 	}
 }
 
-void Read_AtcoCommand_And_Perform_Number_Extractor_And_Output(string url)
+void ReadUtterancesAnOutputNumbers_WithExpected(string url)
 {
 	ReadAtCoCommand atco1 = ReadAtCoCommand(url);
 	cout << "Number from utterances of file: '" << url << "':\n";
@@ -145,6 +145,22 @@ void Read_AtcoCommand_And_Perform_Number_Extractor_And_Output(string url)
 
 	vector<vector<int>> expectToRead = {{52, 120}, {1767, 100}, {61, 120}, {52}, {52, 160}, {60}, {}, {34}, {34}, {34, 1016}, {9}};
 	Perform_Number_Extractor_And_Output(wordSeqFromAtco1, expectToRead);
+}
+
+void ReadUtterancesAnOutputNumbers(string url)
+{
+	ReadAtCoCommand atco1 = ReadAtCoCommand(url);
+	cout << "Number from utterances of file: '" << url << "':\n";
+	vector<string> wordSeqFromAtco1 = {};
+	for (int i = 0; i < atco1.getOutputAtcoCommand().getDynAtcoCommands().getSize(); i++)
+	{
+		if (atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence().length() > 1)
+		{
+			wordSeqFromAtco1.push_back(atco1.getOutputAtcoCommand().getDynAtcoCommands().getElementArray(i).getWordSequence());
+		}
+	}
+
+	Perform_Number_Extractor_And_Output(wordSeqFromAtco1);
 }
 
 bool test0()
@@ -293,8 +309,10 @@ int main()
 		"contact director one one nine dummy eight goodbye"};
 
 	Perform_Number_Extractor_And_Output(wordSeq);
-	std::cout << "\n<==============devider=============>\n\n";
+	cout_with_color(PINK, "\n<==============devider=============>\n\n");
 	Perform_Number_Extractor_And_Output(wordSeq2);
-	std::cout << "\n<==============devider=============>\n\n";
-	Read_AtcoCommand_And_Perform_Number_Extractor_And_Output("./AtcoCommand/longTest.txt");
+	cout_with_color(PINK, "\n<==============devider=============>\n\n");
+	ReadUtterancesAnOutputNumbers("./AtcoCommand/longTest.txt");
+	cout_with_color(PINK, "\n<==============devider=============>\n\n");
+	ReadUtterancesAnOutputNumbers_WithExpected("./AtcoCommand/longTest.txt");
 }
