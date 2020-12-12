@@ -20,57 +20,63 @@ void cout_with_color(unsigned short color, string text)
 NumberExtractor testForIntNumber(string wordSeq, vector<int> expNumber, bool &b_success, bool expected)
 {
 	NumberExtractor output(wordSeq);
+	b_success = expected;
 	if (!output.PerformFullExtraction())
 	{
 		cout << "false1 #" << endl;
 		b_success = !expected;
+		return output;
 	}
 
-	else if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
+	if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
 	{
 		cout << "false2 #" << output.GetExtractedNumbersCnt() << "#" << expNumber.size() << "# ";
 		b_success = !expected;
+		return output;
 	}
-	else
+
+	for (int i = 0; unsigned(i) < expNumber.size(); i++)
 	{
-		for (int i = 0; unsigned(i) < expNumber.size(); i++)
+		if (expNumber[i] != output.GetNumberAsInt(i) || !output.IsNumberInt(i))
 		{
-			if (expNumber[i] != output.GetNumberAsInt(i) || !output.IsNumberInt(i))
-			{
-				cout << "false3 #" << output.GetNumberAsInt(i) << "#" << output.GetNumberAsString(i) << "#";
-				b_success = !expected;
-			}
+			cout << "false3 #" << output.GetNumberAsInt(i) << "#" << output.GetNumberAsString(i) << "#";
+			b_success = !expected;
+			return output;
 		}
 	}
 
-	b_success = expected;
 	return output;
 }
 
 NumberExtractor testForDecimalNumber(string wordSeq, vector<double> expNumber, bool &b_success, bool expected)
 {
 	NumberExtractor output(wordSeq);
+	b_success = expected;
+
 	if (!output.PerformFullExtraction())
 	{
 		cout << "false1 #" << endl;
 		b_success = !expected;
+		return output;
 	}
-	else if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
+
+	if (unsigned(output.GetExtractedNumbersCnt()) != unsigned(expNumber.size()))
 	{
 		cout << "false2 #" << output.GetExtractedNumbersCnt() << "#" << expNumber.size() << "# ";
 		b_success = !expected;
+		return output;
 	}
-	else
+
+	for (int i = 0; unsigned(i) < unsigned(expNumber.size()); i++)
 	{
-		for (int i = 0; unsigned(i) < unsigned(expNumber.size()); i++)
+		if (expNumber[i] != output.GetNumberAsDouble(i) || !output.IsNumberDouble(i))
 		{
-			if (expNumber[i] != output.GetNumberAsDouble(i) || !output.IsNumberDouble(i))
-			{
-				cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << output.GetNumberAsString(i) << "#";
-				b_success = !expected;
-			}
+			cout << "false3 #" << output.GetNumberAsDouble(i) << "#" << output.GetNumberAsString(i) << "#";
+			b_success = !expected;
+			return output;
 		}
 	}
+
 	return output;
 }
 
@@ -240,7 +246,25 @@ bool testExtractNumberThousand()
 	NumberExtractor numEx8 =
 		testForIntNumber(wordSeq8, expNumbers8, b_success8, true);
 
-	return b_success && b_success2 && b_success3 && b_success4 && b_success5 && b_success6 && b_success7 && b_success8;
+	string wordSeq9 = "one six eight zero";
+	vector<int> expNumbers9 = {1680};
+	bool b_success9 = true;
+	NumberExtractor numEx9 =
+		testForIntNumber(wordSeq9, expNumbers9, b_success9, true);
+
+	string wordSeq10 = "descend ten thousand feet heading zero thirty";
+	vector<int> expNumbers10 = {10000, 30};
+	bool b_success10 = true;
+	NumberExtractor numEx10 =
+		testForIntNumber(wordSeq10, expNumbers10, b_success10, true);
+
+	string wordSeq11 = "lufthansa one alfa two six descend ten thousand four hundred twenty one feet heading two thirty";
+	vector<int> expNumbers11 = {1, 26, 10421, 230};
+	bool b_success11 = true;
+	NumberExtractor numEx11 =
+		testForIntNumber(wordSeq11, expNumbers11, b_success11, true);
+
+	return b_success && b_success2 && b_success3 && b_success4 && b_success5 && b_success6 && b_success7 && b_success8 && b_success9 && b_success10 && b_success11;
 }
 
 bool testExtractDecimalNumber()
@@ -256,7 +280,13 @@ bool testExtractDecimalNumber()
 	bool b_success2 = true;
 	NumberExtractor numEx2 =
 		testForDecimalNumber(wordSeq2, expNumbers2, b_success2, true);
-	return b_success && b_success2;
+
+	string wordSeq3 = "contact one one eight decimal four nine";
+	vector<double> expNumbers3 = {118.49};
+	bool b_success3 = true;
+	NumberExtractor numEx3 =
+		testForDecimalNumber(wordSeq3, expNumbers3, b_success3, true);
+	return b_success && b_success2 && b_success3;
 }
 
 int main()
@@ -312,7 +342,7 @@ int main()
 	cout_with_color(PINK, "\n<==============devider=============>\n\n");
 	Perform_Number_Extractor_And_Output(wordSeq2);
 	cout_with_color(PINK, "\n<==============devider=============>\n\n");
-	ReadUtterancesAnOutputNumbers("./AtcoCommand/longTest.txt");
+	ReadUtterancesAnOutputNumbers("./AtcoCommand/BigWordSeqPlusCmdsFile.txt");
 	cout_with_color(PINK, "\n<==============devider=============>\n\n");
 	ReadUtterancesAnOutputNumbers_WithExpected("./AtcoCommand/longTest.txt");
 }
