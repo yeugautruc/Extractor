@@ -1,0 +1,65 @@
+[1mdiff --git a/NumberExtractor.cpp b/NumberExtractor.cpp[m
+[1mindex 2752299..816da56 100644[m
+[1m--- a/NumberExtractor.cpp[m
+[1m+++ b/NumberExtractor.cpp[m
+[36m@@ -2,7 +2,7 @@[m
+ #include <functional>[m
+ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtractionAfter)[m
+ {[m
+[31m-    indexOfListNumberExtracted = startIndexExtractionAfter +1;[m
+[32m+[m[32m    indexOfListNumberExtracted = startIndexExtractionAfter + 1;[m[41m[m
+     std::map<std::string, int> conv;[m
+     conv["zero"] = 0;[m
+     conv["decimal"] = 222;[m
+[36m@@ -162,10 +162,16 @@[m [mNumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract[m
+                 result = result + "000";[m
+                 break;[m
+             case 222:[m
+[31m-                result = result + ",";[m
+[32m+[m[32m                if (i > 0 && i < numsExtracted.size() - 1)[m[41m[m
+[32m+[m[32m                {[m[41m[m
+[32m+[m[32m                    if (result != "" && numsExtracted[i + 1] != 222)[m[41m[m
+[32m+[m[32m                    {[m[41m[m
+[32m+[m[32m                        result = result + ",";[m[41m[m
+[32m+[m[32m                    }[m[41m[m
+[32m+[m[32m                }[m[41m[m
+                 break;[m
+             default:[m
+[31m-                if (unsigned(i) <(unsigned(numsExtracted.size()) - 1))[m
+[32m+[m[32m                if (unsigned(i) < (unsigned(numsExtracted.size()) - 1))[m[41m[m
+                 {[m
+                     if (result != "" && numsExtracted[i + 1] == 404)[m
+                     {[m
+[36m@@ -221,11 +227,11 @@[m [mNumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract[m
+ NumberExtractor::NumberExtractor(const std::vector<std::string> &ar_allWordAsString,[m
+                                  int startIndexExtractionAfter)[m
+ {[m
+[31m-    indexOfListNumberExtracted = startIndexExtractionAfter+1;[m
+[32m+[m[32m    indexOfListNumberExtracted = startIndexExtractionAfter + 1;[m[41m[m
+     for (int i = 0; unsigned(i) < unsigned(ar_allWordAsString.size()); i++)[m
+     {[m
+         NumberExtractor temp(ar_allWordAsString[i]);[m
+[31m-        for (int f = 0;  unsigned(f) < unsigned(temp.getListOfNumberExtracted().size()); f++)[m
+[32m+[m[32m        for (int f = 0; unsigned(f) < unsigned(temp.getListOfNumberExtracted().size()); f++)[m[41m[m
+         {[m
+             listOfNumberExtracted.push_back(temp.getListOfNumberExtracted()[f]);[m
+             listOfNumberStringExtracted.push_back(temp.getListOfNumberStringExtracted()[f]);[m
+[1mdiff --git a/NumberExtractor.h b/NumberExtractor.h[m
+[1mindex 390efe5..6d66886 100644[m
+[1m--- a/NumberExtractor.h[m
+[1m+++ b/NumberExtractor.h[m
+[36m@@ -50,6 +50,14 @@[m [mpublic:[m
+         int mi_numberAfterDecimal = -1;[m
+     };[m
+ [m
+[32m+[m[32m    class myexception : public exception[m[41m[m
+[32m+[m[32m    {[m[41m[m
+[32m+[m[32m        virtual const char *what() const throw()[m[41m[m
+[32m+[m[32m        {[m[41m[m
+[32m+[m[32m            return "My exception happened";[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[32m    } myex;[m[41m[m
+[32m+[m[41m[m
+ public:[m
+     // the numbers are extracted from astr_WordSeq[m
+     // starting after word startIndexExtractionAfter, first word starts at index 0[m

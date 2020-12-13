@@ -50,6 +50,14 @@ public:
         int mi_numberAfterDecimal = -1;
     };
 
+    class myexception : public exception
+    {
+        virtual const char *what() const throw()
+        {
+            return "My exception happened";
+        }
+    } myex;
+
 public:
     // the numbers are extracted from astr_WordSeq
     // starting after word startIndexExtractionAfter, first word starts at index 0

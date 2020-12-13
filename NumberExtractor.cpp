@@ -2,7 +2,7 @@
 #include <functional>
 NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtractionAfter)
 {
-    indexOfListNumberExtracted = startIndexExtractionAfter +1;
+    indexOfListNumberExtracted = startIndexExtractionAfter + 1;
     std::map<std::string, int> conv;
     conv["zero"] = 0;
     conv["decimal"] = 222;
@@ -162,10 +162,16 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
                 result = result + "000";
                 break;
             case 222:
-                result = result + ",";
+                if (i > 0 && i < numsExtracted.size() - 1)
+                {
+                    if (result != "" && numsExtracted[i + 1] != 222)
+                    {
+                        result = result + ",";
+                    }
+                }
                 break;
             default:
-                if (unsigned(i) <(unsigned(numsExtracted.size()) - 1))
+                if (unsigned(i) < (unsigned(numsExtracted.size()) - 1))
                 {
                     if (result != "" && numsExtracted[i + 1] == 404)
                     {
@@ -221,11 +227,11 @@ NumberExtractor::NumberExtractor(std::string astr_WordSeq, int startIndexExtract
 NumberExtractor::NumberExtractor(const std::vector<std::string> &ar_allWordAsString,
                                  int startIndexExtractionAfter)
 {
-    indexOfListNumberExtracted = startIndexExtractionAfter+1;
+    indexOfListNumberExtracted = startIndexExtractionAfter + 1;
     for (int i = 0; unsigned(i) < unsigned(ar_allWordAsString.size()); i++)
     {
         NumberExtractor temp(ar_allWordAsString[i]);
-        for (int f = 0;  unsigned(f) < unsigned(temp.getListOfNumberExtracted().size()); f++)
+        for (int f = 0; unsigned(f) < unsigned(temp.getListOfNumberExtracted().size()); f++)
         {
             listOfNumberExtracted.push_back(temp.getListOfNumberExtracted()[f]);
             listOfNumberStringExtracted.push_back(temp.getListOfNumberStringExtracted()[f]);
